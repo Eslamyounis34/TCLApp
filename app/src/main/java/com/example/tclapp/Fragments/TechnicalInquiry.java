@@ -1,20 +1,25 @@
-package com.example.tclapp.Fragments;
+package com.example.tclapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.tclapp.R;
-
-import androidx.fragment.app.Fragment;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TechnicalInquiry extends Fragment {
-
+public class TechnicalInquiry extends Fragment  {
 
 
 
@@ -27,6 +32,14 @@ public class TechnicalInquiry extends Fragment {
         View v=inflater.inflate(R.layout.fragment_technical_inquiry, container, false);
 
 
+
+
+
+
+
+
         return v;
     }
+
+
 }

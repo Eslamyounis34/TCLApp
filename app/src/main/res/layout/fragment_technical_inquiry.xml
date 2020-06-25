@@ -1,16 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="Fragments.TechnicalInquiry">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="inquiry"
-        android:gravity="center"
-        />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:id="@+id/sitelayout"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Site"
+                android:layout_weight=".3"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                ></TextView>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight=".7"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/inquiryedittextbg"
+                android:id="@+id/siteedittext"
+
+                ></EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/materiallayout"
+            android:layout_below="@id/sitelayout"
+            android:weightSum="1"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".3"
+                android:layout_height="wrap_content"
+                android:text="Material"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                ></TextView>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight=".7"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/inquiryedittextbg"
+                android:id="@+id/materialedittext"
+                ></EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/problemLAyout"
+            android:layout_below="@id/materiallayout"
+            android:weightSum="1"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Problem Descrition"
+                android:layout_weight=".3"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                ></TextView>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="220dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".7"
+                android:background="@drawable/inquiryedittextbg"
+                android:id="@+id/problemedittext"
+
+                ></EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/emaillayout"
+            android:layout_below="@id/problemLAyout"
+            android:weightSum="1"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".3"
+                android:layout_height="wrap_content"
+                android:text="Your Email"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                ></TextView>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight=".7"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/inquiryedittextbg"
+                android:id="@+id/inquiry_emailedittext"
+                ></EditText>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imagelayout"
+            android:layout_below="@id/emaillayout"
+            android:weightSum="1"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".3"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="Image"
+                android:textSize="20sp"
+                ></TextView>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight=".7"
+                android:src="@drawable/takepicicon"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/inquiryedittextbg"
+                android:id="@+id/takeimage"
+                ></ImageView>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sendinquiry_bt"
+            android:layout_below="@id/imagelayout"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_background"
+            android:textColor="#fff"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="Send Inquiry"></Button>
+    </RelativeLayout>
+</ScrollView>

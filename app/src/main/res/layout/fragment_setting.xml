@@ -5,11 +5,60 @@
     android:layout_height="match_parent"
     tools:context="Fragments.SettingFragment">
 
-    <TextView
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/conditionlayout"
+      >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="20sp"
+          android:text="Conditions Of Use"
+          android:textStyle="bold"
+          android:textColor="#000"
+          android:id="@+id/condition_next_tx"
+          android:layout_margin="15dp"
+          ></TextView>
+
+      <ImageView
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="10dp"
+          android:layout_margin="15dp"
+          android:src="@drawable/nexticon"
+          android:id="@+id/conditions_next_icon"
+          ></ImageView>
+  </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Setting"
-        android:gravity="center"
-        />
+        android:layout_height="wrap_content"
+        android:id="@+id/Imprintlayout"
+        android:layout_below="@id/conditionlayout"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:id="@+id/imprint_next_tx"
+            android:textColor="#000"
+            android:text="Imprint"
+            android:textStyle="bold"
+            android:layout_margin="15dp"
+            ></TextView>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_margin="15dp"
+            android:id="@+id/imprint_next_icon"
+            android:src="@drawable/nexticon"
+            ></ImageView>
+
+    </RelativeLayout>
 
 </RelativeLayout>

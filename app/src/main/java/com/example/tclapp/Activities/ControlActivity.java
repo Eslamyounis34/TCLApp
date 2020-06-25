@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import com.example.tclapp.Fragments.HomeFragment;
 import com.example.tclapp.Fragments.SettingFragment;
-import com.example.tclapp.Fragments.TechnicalInquiry;
 import com.example.tclapp.R;
+import com.example.tclapp.TechnicalInquiry;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
