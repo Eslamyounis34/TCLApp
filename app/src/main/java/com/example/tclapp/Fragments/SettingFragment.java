@@ -1,4 +1,4 @@
-package com.example.tclapp;
+package com.example.tclapp.Fragments;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toolbar;
+
+import com.example.tclapp.R;
 
 
 /**

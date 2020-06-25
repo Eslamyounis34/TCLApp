@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ControlActivity">
+    tools:context=".Activities.ControlActivity">
 
-    <include
-        android:id="@+id/activitytoolbar"
-        layout="@layout/basictoolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:layout_width="match_parent"
