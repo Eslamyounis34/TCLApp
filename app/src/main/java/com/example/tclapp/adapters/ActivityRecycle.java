@@ -1,4 +1,4 @@
-package com.example.tclapp.Adapters;
+package com.example.tclapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,19 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tclapp.Models.RecommenctaionModel;
-import com.example.tclapp.R;
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tclapp.R;
+import com.example.tclapp.model.RecommendationModel;
+
+import java.util.ArrayList;
+
 public class ActivityRecycle extends RecyclerView.Adapter<ActivityRecycle.ActivitiesViewHolder> {
     private Context mContext;
-    private ArrayList<RecommenctaionModel> mActivitiesModels;
-    public ActivityRecycle(Context mContext, ArrayList<RecommenctaionModel> mActivitiesModels) {
+    private ArrayList<RecommendationModel> mActivitiesModels;
+    public ActivityRecycle(Context mContext, ArrayList<RecommendationModel> mActivitiesModels) {
         this.mContext = mContext;
         this.mActivitiesModels = mActivitiesModels;
     }

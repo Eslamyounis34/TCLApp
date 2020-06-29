@@ -1,57 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="countries">
-        <item>Egypt</item>
-        <item>Philippines</item>
-        <item>Kingdom of Saudi Arabia</item>
-        <item>Russia</item>
-        <item>India</item>
-        <item>UAE</item>
-        <item>Oman</item>
-        <item>Azerbaijan</item>
-        <item>Sri Lanka</item>
-        <item>Kuwait</item>
-        <item>Kazakhstan</item>
-        <item>Qatar</item>
-        <item>Serbia</item>
-        <item>Bosnia</item>
-        <item>Lebanon</item>
-        <item>Jordan</item>
-        <item>Maldives</item>
-        <item>Iran</item>
-        <item>Georgia</item>
-        <item>Vietnam</item>
-        <item>Poland</item>
-        <item>Italy</item>
-        <item>Bahrain</item>
-        <item>Abkhazia</item>
-        <item>Pakistan</item>
-        <item>Turkey</item>
-        <item>USA</item>
-        <item>Czech Republic</item>
-        <item>Germany</item>
-        <item>Armenia</item>
-        <item>Slovakia</item>
-        <item>China</item>
-        <item>Nepal</item>
-        <item>Bangladesh</item>
-        <item>Somalia</item>
-        <item>Kenya</item>
-        <item>Tanzania</item>
-        <item>Morocco</item>
-        <item>Sudan</item>
-        <item>Byelorussia</item>
-        <item>Uzbekistan</item>
-        <item>Moldova</item>
-        <item>Malaysia</item>
-        <item>Romania</item>
-        <item>Indonesia</item>
-        <item>Ghana</item>
-        <item>Uganda</item>
-        <item>Ethiopia</item>
-        <item>Algeria</item>
-        <item>Dominican Republic</item>
-        <item>Austria</item>
-        <item>Global</item>
-    </string-array>
-</resources>
+<resources> <string-array name="countries">
+    <item>Egypt</item>
+    <item>Philippines</item>
+    <item>Kingdom of Saudi Arabia</item>
+    <item>Russia</item>
+    <item>India</item>
+    <item>UAE</item>
+    <item>Oman</item>
+    <item>Azerbaijan</item>
+    <item>Sri Lanka</item>
+    <item>Kuwait</item>
+    <item>Kazakhstan</item>
+    <item>Qatar</item>
+    <item>Serbia</item>
+    <item>Bosnia</item>
+    <item>Lebanon</item>
+    <item>Jordan</item>
+    <item>Maldives</item>
+    <item>Iran</item>
+    <item>Georgia</item>
+    <item>Vietnam</item>
+    <item>Poland</item>
+    <item>Italy</item>
+    <item>Bahrain</item>
+    <item>Abkhazia</item>
+    <item>Pakistan</item>
+    <item>Turkey</item>
+    <item>USA</item>
+    <item>Czech Republic</item>
+    <item>Germany</item>
+    <item>Armenia</item>
+    <item>Slovakia</item>
+    <item>China</item>
+    <item>Nepal</item>
+    <item>Bangladesh</item>
+    <item>Somalia</item>
+    <item>Kenya</item>
+    <item>Tanzania</item>
+    <item>Morocco</item>
+    <item>Sudan</item>
+    <item>Byelorussia</item>
+    <item>Uzbekistan</item>
+    <item>Moldova</item>
+    <item>Malaysia</item>
+    <item>Romania</item>
+    <item>Indonesia</item>
+    <item>Ghana</item>
+    <item>Uganda</item>
+    <item>Ethiopia</item>
+    <item>Algeria</item>
+    <item>Dominican Republic</item>
+    <item>Austria</item>
+    <item>Global</item>
+</string-array></resources>

@@ -1,19 +1,20 @@
 package com.example.tclapp.Activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tclapp.Adapters.ProductsAdapter;
-import com.example.tclapp.Interfaces.ApiInterface;
-import com.example.tclapp.Models.ProductsParent;
 import com.example.tclapp.R;
+import com.example.tclapp.adapters.ProductsAdapter;
+import com.example.tclapp.data.RetrofitApi;
+import com.example.tclapp.model.ProductsParent;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,12 +32,17 @@ public class CleaningProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cleaning_product);
+
+
+
         mRecyclerView = (RecyclerView)findViewById(R.id.cl_product_recycle);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        toolbar=findViewById(R.id.apptoolbar);
-        toolbarTitle=findViewById(R.id.toolbaractivityname);
+        toolbar=findViewById(R.id.custom_app_toolbar);
+        toolbarTitle = findViewById(R.id.toolbaractivityname);
+        back = findViewById(R.id.backicon);
+
+
         toolbarTitle.setText("Cleaning Recommendtion Product");
-        back= findViewById(R.id.back_button);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +57,7 @@ public class CleaningProductActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().
                 baseUrl("http://appadmin.tclgcc.com")
                 .addConverterFactory(GsonConverterFactory.create()).build();
-        final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        final RetrofitApi apiInterface = retrofit.create(RetrofitApi.class);
         Call<ProductsParent> call = apiInterface.getproduct(id);
         call.enqueue(new Callback<ProductsParent>() {
             @Override

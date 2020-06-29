@@ -9,18 +9,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tclapp.Adapters.ActivityRecycle;
-import com.example.tclapp.Adapters.MaterailsAdapter;
-import com.example.tclapp.Interfaces.ApiInterface;
-import com.example.tclapp.Models.MaterialsParent;
-import com.example.tclapp.Models.RecommendationParent;
 import com.example.tclapp.R;
+import com.example.tclapp.adapters.ActivityRecycle;
+import com.example.tclapp.adapters.MaterailsAdapter;
+import com.example.tclapp.data.RetrofitApi;
+import com.example.tclapp.model.MaterialsParent;
+import com.example.tclapp.model.RecommendationParent;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +29,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CleaningActivity extends AppCompatActivity {
+
+
     private Toolbar toolbar;
     private TextView toolbarTitle;
     private ImageView back;
@@ -44,14 +47,15 @@ public class CleaningActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         materialsRecycle = (RecyclerView)findViewById(R.id.materials_recycle);
         materialsRecycle.setLayoutManager(new LinearLayoutManager(this));
-        toolbar=findViewById(R.id.procedure_custom_app_toolbar);
-        toolbarTitle = findViewById(R.id.proceduretoolbaractivityname);
+        toolbar=findViewById(R.id.custom_app_toolbar);
+        toolbarTitle = findViewById(R.id.toolbaractivityname);
+        back = findViewById(R.id.backicon);
+
         toolbarTitle.setText("Cleaning Recommendations");
-        back = findViewById(R.id.cleaningbackicon);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              onBackPressed();
+                onBackPressed();
             }
         });
 
@@ -62,7 +66,7 @@ public class CleaningActivity extends AppCompatActivity {
         Retrofit retrofit = new Retrofit.Builder().
                 baseUrl("http://appadmin.tclgcc.com/api/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
-        final ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        final RetrofitApi apiInterface = retrofit.create(RetrofitApi.class);
         Call<RecommendationParent> call = apiInterface.getInfo();
         call.enqueue(new Callback<RecommendationParent>() {
             @Override
@@ -94,8 +98,8 @@ public class CleaningActivity extends AppCompatActivity {
             Retrofit retrofit2 = new Retrofit.Builder()
                     .baseUrl("http://appadmin.tclgcc.com")
                     .addConverterFactory(GsonConverterFactory.create()).build();
-            final ApiInterface apiInterface1 = retrofit2.create(ApiInterface.class);
-            Call<MaterialsParent> call1 = apiInterface1.getMaterials(id);
+            final RetrofitApi apiInterface1 = retrofit2.create(RetrofitApi.class);
+            Call<MaterialsParent> call1 = apiInterface1.getCleaningMaterials(id);
             call1.enqueue(new Callback<MaterialsParent>() {
                 @Override
                 public void onResponse(Call<MaterialsParent> call, Response<MaterialsParent> response) {
@@ -113,3 +117,4 @@ public class CleaningActivity extends AppCompatActivity {
     };
 
 }
+

@@ -2,9 +2,13 @@ package com.example.tclapp.data;
 
 import android.text.GetChars;
 
+import com.example.tclapp.model.CountryParent;
+import com.example.tclapp.model.MaterialsParent;
 import com.example.tclapp.model.ProcedureMaterialParent;
 import com.example.tclapp.model.ProcedureParent;
 import com.example.tclapp.model.ProductList;
+import com.example.tclapp.model.ProductsParent;
+import com.example.tclapp.model.RecommendationParent;
 import com.example.tclapp.model.RegisterResponse;
 import com.example.tclapp.model.SearchResponse;
 import com.example.tclapp.model.SelectedProduct;
@@ -46,10 +50,19 @@ public interface RetrofitApi {
     @POST("api/user/login")
     Call<UserLoginData>loginUser(@Body UserLogin user);
 
-
-
     @POST("/api/ProductSearch")
     Call<SearchResponse>searchResult( @Query("search_name")  String name);
+
+
+
+    @GET("recommendation/showActivity?page=1")
+    Call<RecommendationParent> getInfo();
+    @GET("/api/recommendation/showMaterial?")
+    Call<MaterialsParent> getCleaningMaterials(@Query("id")String id);
+    @GET("/api/recommendation/show?")
+    Call<ProductsParent> getproduct(@Query("product_category_id")String id);
+    @POST("/api/consultant/consult?")
+    Call<CountryParent> getCountry(@Query("country") String coutryName);
 
 
 

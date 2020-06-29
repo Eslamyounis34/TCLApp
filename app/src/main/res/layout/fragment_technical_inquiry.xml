@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="TechnicalInquiry">
-
-
-
+    tools:context="Fragments.TechnicalInquiry">
+    <include
+        android:id="@+id/activitytoolbar"
+        layout="@layout/basictoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/activitytoolbar">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -168,3 +174,6 @@
             android:text="Send Inquiry"></Button>
     </RelativeLayout>
 </ScrollView>
+
+
+</RelativeLayout>

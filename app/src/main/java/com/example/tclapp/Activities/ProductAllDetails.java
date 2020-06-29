@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.content.UriMatcher;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +43,8 @@ public class ProductAllDetails extends AppCompatActivity {
          howtouse=findViewById(R.id.howtouseDesc);
         Intent i =getIntent();
         String getId=i.getExtras().getString("SelectedProductId");
+
+        Log.e("IDCHECK",getId);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(RetrofitApi.BASE_URL)

@@ -10,13 +10,13 @@
         android:padding="10dp"
         android:layout_marginTop="5dp"
         android:weightSum="1">
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/activity_names"
-        android:text="kitchen"
-        android:textSize="20sp"
-        android:layout_weight="0.87"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_names"
+            android:text="kitchen"
+            android:textSize="20sp"
+            android:layout_weight="0.87"/>
 
         <ImageView
             android:layout_width="0dp"

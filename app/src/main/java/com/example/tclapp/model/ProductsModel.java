@@ -1,8 +1,8 @@
-package com.example.tclapp.Models;
+package com.example.tclapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProdcutsModel {
+public class ProductsModel {
     @SerializedName("id")
     private   String id;
     @SerializedName("name")

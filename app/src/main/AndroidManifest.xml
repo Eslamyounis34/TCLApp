@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.SearchResult"></activity>
+        <activity android:name=".Activities.CountryInfoActivity"></activity>
+        <activity android:name=".Activities.CleaningProductActivity" />
+        <activity android:name=".Activities.SearchResult" />
         <activity android:name=".Activities.ProcedurePdfActivity" />
         <activity android:name=".Activities.Register" />
         <activity android:name=".Activities.Main2Activity" />

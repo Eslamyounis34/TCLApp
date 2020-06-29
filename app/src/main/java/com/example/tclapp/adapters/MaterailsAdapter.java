@@ -1,4 +1,4 @@
-package com.example.tclapp.Adapters;
+package com.example.tclapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tclapp.Activities.CleaningProductActivity;
-import com.example.tclapp.Models.MaterialsModel;
-import com.example.tclapp.R;
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.tclapp.Activities.CleaningProductActivity;
+import com.example.tclapp.R;
+import com.example.tclapp.model.MaterialsModel;
+
+import java.util.ArrayList;
 
 public class MaterailsAdapter extends RecyclerView.Adapter<MaterailsAdapter.MaterialsViewHolder> {
     private Context mContext;

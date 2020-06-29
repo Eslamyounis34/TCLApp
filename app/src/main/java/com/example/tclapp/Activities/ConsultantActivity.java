@@ -11,12 +11,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.tclapp.Interfaces.ApiInterface;
-import com.example.tclapp.Models.CountryParent;
 import com.example.tclapp.R;
+import com.example.tclapp.data.RetrofitApi;
+import com.example.tclapp.model.CountryParent;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,9 +40,13 @@ public class ConsultantActivity extends AppCompatActivity {
         country = findViewById(R.id.country);
         postal = findViewById(R.id.postalcode_txt);
         toolbar=findViewById(R.id.apptoolbar);
-        toolbarTitle=findViewById(R.id.toolbaractivityname);
+
+        toolbar=findViewById(R.id.custom_app_toolbar);
+        toolbarTitle = findViewById(R.id.toolbaractivityname);
+        back = findViewById(R.id.backicon);
         toolbarTitle.setText("Consultant Nearby");
-        back = (ImageView) findViewById(R.id.back_button);
+
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,35 +65,35 @@ public class ConsultantActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
                 if (parent.getId() == R.id.countries_names) {
-                     countryN = parent.getSelectedItem().toString();
+                    countryN = parent.getSelectedItem().toString();
                     show.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Retrofit retrofit2 = new Retrofit.Builder()
-                            .baseUrl("http://appadmin.tclgcc.com")
-                            .addConverterFactory(GsonConverterFactory.create()).build();
-                   final ApiInterface apiInterface = retrofit2.create(ApiInterface.class);
-                    Call<CountryParent> call = apiInterface.getCountry(countryN);
-                    call.enqueue(new Callback<CountryParent>() {
-                        @Override
-                        public void onResponse(Call<CountryParent> call, Response<CountryParent> response) {
-                            if(response.body().getcParent().getCountrymodelList().get(position).getCode().equals(null)){
-                                postalCode.setText("No Code");
-                            }
-                            else {
-                            postalCode.setText(response.body().getcParent().getCountrymodelList().get(position).getCode());
+                                    .baseUrl("http://appadmin.tclgcc.com")
+                                    .addConverterFactory(GsonConverterFactory.create()).build();
+                            final RetrofitApi apiInterface = retrofit2.create(RetrofitApi.class);
+                            Call<CountryParent> call = apiInterface.getCountry(countryN);
+                            call.enqueue(new Callback<CountryParent>() {
+                                @Override
+                                public void onResponse(Call<CountryParent> call, Response<CountryParent> response) {
+                                    if(response.body().getcParent().getCountrymodelList().get(position).getCode().equals(null)){
+                                        postalCode.setText("No Code");
+                                    }
+                                    else {
+                                        postalCode.setText(response.body().getcParent().getCountrymodelList().get(position).getCode());
 
-                            Intent intent = new Intent(getApplicationContext(),CountryInfoActivity.class);
-                            intent.putExtra("country",countryN);
-                            startActivity(intent);
-                            }
-                        }
+                                        Intent intent = new Intent(getApplicationContext(),CountryInfoActivity.class);
+                                        intent.putExtra("country",countryN);
+                                        startActivity(intent);
+                                    }
+                                }
 
-                        @Override
-                        public void onFailure(Call<CountryParent> call, Throwable t) {
+                                @Override
+                                public void onFailure(Call<CountryParent> call, Throwable t) {
 
-                        }
-                    });
+                                }
+                            });
                         }
                     });
                 }
@@ -105,3 +110,5 @@ public class ConsultantActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 }
+
+

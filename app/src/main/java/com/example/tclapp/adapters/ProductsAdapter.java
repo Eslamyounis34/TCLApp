@@ -1,4 +1,4 @@
-package com.example.tclapp.Adapters;
+package com.example.tclapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,19 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tclapp.Activities.ProcedureActivity;
-import com.example.tclapp.Models.ProdcutsModel;
-import com.example.tclapp.R;
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tclapp.Activities.ProcedureActivity;
+import com.example.tclapp.Activities.ProductAllDetails;
+import com.example.tclapp.R;
+import com.example.tclapp.model.ProductsModel;
+
+import java.util.ArrayList;
+
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder> {
     private Context mContext;
-    private ArrayList<ProdcutsModel> mActivitiesModels;
-    public ProductsAdapter(Context mContext, ArrayList<ProdcutsModel> mActivitiesModels) {
+    private ArrayList<ProductsModel> mActivitiesModels;
+    public ProductsAdapter(Context mContext, ArrayList<ProductsModel> mActivitiesModels) {
         this.mContext = mContext;
         this.mActivitiesModels = mActivitiesModels;
     }
@@ -31,11 +32,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductsViewHolder holder, final int position) {
         holder.names.setText(mActivitiesModels.get(position).getName());
-        Intent i = new Intent(mContext, ProcedureActivity.class);
-        i.putExtra("SelectedProductId", mActivitiesModels.get(position).getId());
-        mContext.startActivity(i);
+        holder.names.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mContext, ProductAllDetails.class);
+                i.putExtra("SelectedProductId","9");
+                mContext.startActivity(i);
+            }
+        });
+
     }
 
     @Override

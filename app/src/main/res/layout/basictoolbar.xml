@@ -13,13 +13,6 @@
             android:layout_height="?attr/actionBarSize"
             android:id="@+id/apptoolbar"
             app:popupTheme="@style/Widget.AppCompat.Light.PopupMenu.Overflow">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/toolbarbackicon"
-                android:layout_marginBottom="10dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:id="@+id/back_button"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

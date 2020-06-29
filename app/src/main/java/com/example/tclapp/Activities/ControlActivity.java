@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.tclapp.Fragments.HomeFragment;
 import com.example.tclapp.Fragments.SettingFragment;
 import com.example.tclapp.Fragments.TechnicalInquiry;
+import com.example.tclapp.Fragments.UserProfileFragment;
 import com.example.tclapp.R;
 import com.example.tclapp.model.SaveSharedPreference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -51,6 +52,12 @@ public class ControlActivity extends AppCompatActivity {
                 case R.id.inquiry:
                     fragment=new TechnicalInquiry();
                    // toolbarTitle.setText("Technical Inquiry");
+                    switchFragment(fragment);
+                    return true;
+
+                case R.id.profile:
+                    fragment=new UserProfileFragment();
+                    // toolbarTitle.setText("Technical Inquiry");
                     switchFragment(fragment);
                     return true;
             }

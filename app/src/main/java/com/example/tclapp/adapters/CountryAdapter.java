@@ -1,4 +1,4 @@
-package com.example.tclapp.Adapters;
+package com.example.tclapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,14 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tclapp.Models.CountryModel;
-import com.example.tclapp.R;
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tclapp.R;
+import com.example.tclapp.model.CountryModel;
+
+import java.util.ArrayList;
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
     private Context mContext;
     private ArrayList<CountryModel> mActivitiesModels;
@@ -52,3 +51,4 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
         }
     }
 }
+

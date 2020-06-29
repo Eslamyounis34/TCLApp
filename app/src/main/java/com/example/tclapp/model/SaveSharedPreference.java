@@ -32,16 +32,14 @@ public class SaveSharedPreference {
         editor.putString(LOGGED_IN_NAME, username);
         editor.apply();
     }
-
-    public static void setUserEmail(Context context, String userEmail) {
+    public static void setUserEmail(Context context, String username) {
         SharedPreferences.Editor editor = getPreferences(context).edit();
-        editor.putString(LOGGED_IN_Email, userEmail);
+        editor.putString(LOGGED_IN_Email, username);
         editor.apply();
     }
-
-    public static void setUserPhone(Context context, String userPhone) {
+    public static void setUserPhone(Context context, String username) {
         SharedPreferences.Editor editor = getPreferences(context).edit();
-        editor.putString(LOGGED_IN_Phone, userPhone);
+        editor.putString(LOGGED_IN_Phone, username);
         editor.apply();
     }
 
@@ -62,7 +60,6 @@ public class SaveSharedPreference {
     public static String getUserEmail(Context context) {
         return getPreferences(context).getString(LOGGED_IN_Email, "tt");
     }
-
     public static String getUserPhone(Context context) {
         return getPreferences(context).getString(LOGGED_IN_Phone, "tt");
     }

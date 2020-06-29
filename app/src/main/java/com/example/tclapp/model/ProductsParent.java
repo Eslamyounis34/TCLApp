@@ -1,4 +1,4 @@
-package com.example.tclapp.Models;
+package com.example.tclapp.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 public class ProductsParent {
     @SerializedName("data")
-    private ArrayList<ProdcutsModel> productmodelList;
+    private ArrayList<ProductsModel> productmodelList;
 
-    public ArrayList<ProdcutsModel> getProductmodelList() {
+    public ArrayList<ProductsModel> getProductmodelList() {
         return productmodelList;
     }
 
-    public void setProductmodelList(ArrayList<ProdcutsModel> productmodelList) {
+    public void setProductmodelList(ArrayList<ProductsModel> productmodelList) {
         this.productmodelList = productmodelList;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.tclapp.Models;
+package com.example.tclapp.model;
 
 import com.google.gson.annotations.SerializedName;
 

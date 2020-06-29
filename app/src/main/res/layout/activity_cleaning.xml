@@ -6,26 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".Activities.CleaningActivity"
     android:id="@+id/cleaning_activity">
-        <include
-            android:id="@+id/activitytoolbar"
-            layout="@layout/app_bar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <include
+        android:id="@+id/activitytoolbar"
+        layout="@layout/custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/activitytoolbar"
         android:orientation="horizontal"
         android:weightSum="2">
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/activity_recycle"
-        android:layout_weight="1"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_recycle"
+            android:layout_weight="1"/>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/materials_recycle"
             android:layout_weight="1"/>
     </LinearLayout>
-    </RelativeLayout>
+</RelativeLayout>
