@@ -6,13 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.tclapp.Activities.CleaningActivity;
 import com.example.tclapp.Activities.ConsultantActivity;
+import com.example.tclapp.Activities.MainActivity;
 import com.example.tclapp.Activities.ProcedureActivity;
 import com.example.tclapp.Activities.ProductsActivity;
 import com.example.tclapp.R;
+import com.example.tclapp.model.SaveSharedPreference;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 
@@ -21,6 +25,9 @@ import androidx.fragment.app.Fragment;
  */
 public class HomeFragment extends Fragment {
     private Button productsBtn,cleaningBtn,procedureBtn,consultantsBtn;
+    Toolbar toolbar;
+    TextView toolbatText;
+    Button bt;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,6 +37,21 @@ public class HomeFragment extends Fragment {
         cleaningBtn = (Button)v.findViewById(R.id.cleaning_button);
         procedureBtn = (Button)v.findViewById(R.id.producer_button);
         consultantsBtn = (Button)v.findViewById(R.id.consultants_button);
+        bt=v.findViewById(R.id.logout);
+
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SaveSharedPreference.setLoggedIn(getContext(), false);
+
+                startActivity(new Intent(getContext(), MainActivity.class));
+
+            }
+        });
+        toolbar=v.findViewById(R.id.apptoolbar);
+        toolbatText =v.findViewById(R.id.toolbaractivityname);
+
+        toolbatText.setText("Home");
         productsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:id="@+id/loginlayout"
     tools:context=".Activities.MainActivity">
 
     <include
@@ -45,8 +46,8 @@
             android:layout_marginEnd="35dp"
             android:background="@drawable/edittext_background"
             android:hint="Email"
-            android:paddingLeft="5dp"
-            android:textColorHint="#0069c0"
+            android:gravity="center"
+            android:textColorHint="#000"
             />
 
         <EditText
@@ -59,9 +60,8 @@
             android:layout_marginEnd="35dp"
             android:background="@drawable/edittext_background"
             android:hint="Password"
-            android:paddingLeft="5dp"
-            android:textColorHint="#0069c0"
-           />
+            android:gravity="center"
+            android:textColorHint="#000"           />
 
         <Button
             android:id="@+id/login_button"

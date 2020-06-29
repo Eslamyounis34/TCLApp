@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".Activities.Register">
+    <include
+        android:id="@+id/activitytoolbar"
+        layout="@layout/custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/activitytoolbar"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/applogo"
+                android:id="@+id/logo"
+                android:layout_marginTop="40dp"></ImageView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:id="@+id/usernameEt"
+                android:layout_below="@id/logo"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="25dp"
+                android:padding="10dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center_horizontal"
+                ></EditText>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:id="@+id/emailEt"
+                android:layout_below="@id/usernameEt"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center_horizontal"
+                ></EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mobile Number"
+                android:id="@+id/mobileEt"
+                android:padding="10dp"
+                android:layout_below="@id/emailEt"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center_horizontal"
+                ></EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password "
+                android:id="@+id/passwordEt"
+                android:padding="10dp"
+                android:layout_below="@id/mobileEt"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center_horizontal"
+                ></EditText>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Retype Password "
+                android:id="@+id/repasswordEt"
+                android:layout_below="@id/passwordEt"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="25dp"
+                android:padding="10dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center_horizontal"
+                ></EditText>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textColor="#fff"
+                android:id="@+id/registerbt"
+                android:background="@drawable/button_background"
+                android:layout_below="@id/repasswordEt"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                ></Button>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/procedureitemlayout"
+    android:layout_margin="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8"
+            android:text="Room Care Products"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:id="@+id/activityrowtext"
+            ></TextView>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_weight=".2"
+            android:src="@drawable/nexticon"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:id="@+id/activityrowimage"
+            ></ImageView>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

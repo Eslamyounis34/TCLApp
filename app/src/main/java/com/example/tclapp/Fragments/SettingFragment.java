@@ -3,6 +3,7 @@ package com.example.tclapp.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.tclapp.Activities.ConditionsOfUseActivity;
 import com.example.tclapp.Activities.ImprintActivity;
@@ -25,6 +25,8 @@ public class SettingFragment extends Fragment {
 
     TextView conditionsTx,imprintTx;
     ImageView conditionsIm,imprintIm;
+    Toolbar toolbar;
+    TextView toolbatText;
 
 
     @Override
@@ -37,6 +39,10 @@ public class SettingFragment extends Fragment {
         imprintTx=v.findViewById(R.id.imprint_next_tx);
         imprintIm=v.findViewById(R.id.imprint_next_icon);
         conditionsIm=v.findViewById(R.id.conditions_next_icon);
+        toolbar=v.findViewById(R.id.apptoolbar);
+        toolbatText =v.findViewById(R.id.toolbaractivityname);
+
+        toolbatText.setText("Settings");
         conditionsTx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
