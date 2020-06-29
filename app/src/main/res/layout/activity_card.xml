@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="5dp"
+        android:weightSum="1">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_names"
+        android:text="kitchen"
+        android:textSize="20sp"
+        android:layout_weight="0.87"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.13"
+            android:src="@drawable/nexticon"
+            android:id="@+id/next_icon"
+            android:baselineAlignBottom="true"
+            android:layout_alignBaseline="@+id/activity_names"
+            android:layout_toRightOf="@+id/activity_names"
+            android:layout_toEndOf="@+id/activity_names"></ImageView>
+    </LinearLayout>
+</RelativeLayout>

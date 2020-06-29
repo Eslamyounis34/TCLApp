@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 public class ProcedureActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView toolbarTitle;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

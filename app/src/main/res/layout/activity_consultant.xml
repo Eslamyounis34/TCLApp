@@ -1,13 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ConsultantActivity">
+    tools:context=".Activities.ConsultantActivity"
+    android:id="@+id/consultant_activity">
     <include
         android:id="@+id/activitytoolbar"
         layout="@layout/basictoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/first_linear"
+        android:layout_below="@id/activitytoolbar"
+        android:weightSum="1"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:id="@+id/country"
+            android:textSize="20sp"
+            android:text="Country"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false"
+            android:gravity="fill"></TextView>
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="13dp"
+            android:layout_weight="0.6"
+            android:textAlignment="center"
+            android:id="@+id/countries_names"
+            android:background="@drawable/spinner_background"></Spinner>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/first_linear"
+            android:id="@+id/second_linear">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:id="@+id/postalcode_txt"
+                android:textSize="20sp"
+                android:gravity="fill"
+                android:text="Postal Code"
+                android:textColor="@android:color/black"
+                android:textAllCaps="false"></TextView>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="11dp"
+                android:layout_weight="0.6"
+                android:textAlignment="center"
+                android:id="@+id/postalcode_edit"
+                android:background="@drawable/spinner_background"
+                ></EditText>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/second_linear"
+        android:weightSum="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:textSize="20sp"
+            android:gravity="fill"
+            android:text="Postal Code"
+            android:textColor="@android:color/black"
+            android:textAllCaps="false"
+            android:visibility="invisible"></TextView>
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="13dp"
+        android:layout_weight="0.6"
+        android:textAlignment="center"
+        android:background="@drawable/new_button_background"
+        android:text="Show Consultants"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:id="@+id/show_consultant"
+        ></Button>
+    </LinearLayout>
+</RelativeLayout>
