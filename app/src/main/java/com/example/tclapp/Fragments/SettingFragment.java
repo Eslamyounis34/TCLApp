@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class SettingFragment extends Fragment {
     ImageView conditionsIm,imprintIm;
     Toolbar toolbar;
     TextView toolbatText;
+    RelativeLayout conditionLayout,imprintLayout;
 
 
     @Override
@@ -41,36 +43,26 @@ public class SettingFragment extends Fragment {
         conditionsIm=v.findViewById(R.id.conditions_next_icon);
         toolbar=v.findViewById(R.id.apptoolbar);
         toolbatText =v.findViewById(R.id.toolbaractivityname);
+        conditionLayout=v.findViewById(R.id.conditionlayout);
+        imprintLayout=v.findViewById(R.id.Imprintlayout);
 
-        toolbatText.setText("Settings");
-        conditionsTx.setOnClickListener(new View.OnClickListener() {
+        conditionLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), ConditionsOfUseActivity.class));
-            }
-        });
-
-        conditionsIm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(),ConditionsOfUseActivity.class));
 
             }
         });
 
-        imprintTx.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), ImprintActivity.class));
-            }
-        });
-        imprintIm.setOnClickListener(new View.OnClickListener() {
+        imprintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),ImprintActivity.class));
+
             }
         });
 
+        toolbatText.setText("Settings");
 
         return v;
     }

@@ -1,5 +1,6 @@
 package com.example.tclapp.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,8 @@ public class ConsultantActivity extends AppCompatActivity {
     private ImageView back;
     private TextView country,postal;
     String countryN;
+    private ProgressDialog mProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +43,10 @@ public class ConsultantActivity extends AppCompatActivity {
         country = findViewById(R.id.country);
         postal = findViewById(R.id.postalcode_txt);
         toolbar=findViewById(R.id.apptoolbar);
-
         toolbar=findViewById(R.id.custom_app_toolbar);
         toolbarTitle = findViewById(R.id.toolbaractivityname);
         back = findViewById(R.id.backicon);
         toolbarTitle.setText("Consultant Nearby");
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +54,6 @@ public class ConsultantActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
         countriesSpinner = (Spinner)findViewById(R.id.countries_names);
         postalCode = (EditText)findViewById(R.id.postalcode_edit);
         show = (Button)findViewById(R.id.show_consultant);
@@ -69,6 +69,12 @@ public class ConsultantActivity extends AppCompatActivity {
                     show.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            mProgressDialog = new ProgressDialog(ConsultantActivity.this);
+                            mProgressDialog.setIndeterminate(true);
+                            mProgressDialog.setMessage("Loading...");
+                            mProgressDialog.setCanceledOnTouchOutside(false);
+                            mProgressDialog.show();
+
                             Retrofit retrofit2 = new Retrofit.Builder()
                                     .baseUrl("http://appadmin.tclgcc.com")
                                     .addConverterFactory(GsonConverterFactory.create()).build();
@@ -77,10 +83,12 @@ public class ConsultantActivity extends AppCompatActivity {
                             call.enqueue(new Callback<CountryParent>() {
                                 @Override
                                 public void onResponse(Call<CountryParent> call, Response<CountryParent> response) {
+                                    mProgressDialog.dismiss();
                                     if(response.body().getcParent().getCountrymodelList().get(position).getCode().equals(null)){
                                         postalCode.setText("No Code");
                                     }
                                     else {
+                                        mProgressDialog.dismiss();
                                         postalCode.setText(response.body().getcParent().getCountrymodelList().get(position).getCode());
 
                                         Intent intent = new Intent(getApplicationContext(),CountryInfoActivity.class);
@@ -88,10 +96,8 @@ public class ConsultantActivity extends AppCompatActivity {
                                         startActivity(intent);
                                     }
                                 }
-
                                 @Override
                                 public void onFailure(Call<CountryParent> call, Throwable t) {
-
                                 }
                             });
                         }
@@ -100,15 +106,11 @@ public class ConsultantActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
 }
-
-

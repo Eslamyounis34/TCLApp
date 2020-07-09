@@ -20,6 +20,26 @@ public class AllProductDetails {
     private String whereToUse;
     @SerializedName("avaliable_packing")
     private String avaliablePaking;
+    @SerializedName("liter")
+    private String liter;
+    @SerializedName("meter")
+    private String meter;
+
+    public String getLiter() {
+        return liter;
+    }
+
+    public void setLiter(String liter) {
+        this.liter = liter;
+    }
+
+    public String getMeter() {
+        return meter;
+    }
+
+    public void setMeter(String meter) {
+        this.meter = meter;
+    }
 
     public String getCategory_id() {
         return category_id;

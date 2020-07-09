@@ -27,7 +27,6 @@ public class HomeFragment extends Fragment {
     private Button productsBtn,cleaningBtn,procedureBtn,consultantsBtn;
     Toolbar toolbar;
     TextView toolbatText;
-    Button bt;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,17 +36,8 @@ public class HomeFragment extends Fragment {
         cleaningBtn = (Button)v.findViewById(R.id.cleaning_button);
         procedureBtn = (Button)v.findViewById(R.id.producer_button);
         consultantsBtn = (Button)v.findViewById(R.id.consultants_button);
-        bt=v.findViewById(R.id.logout);
 
-        bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SaveSharedPreference.setLoggedIn(getContext(), false);
 
-                startActivity(new Intent(getContext(), MainActivity.class));
-
-            }
-        });
         toolbar=v.findViewById(R.id.apptoolbar);
         toolbatText =v.findViewById(R.id.toolbaractivityname);
 

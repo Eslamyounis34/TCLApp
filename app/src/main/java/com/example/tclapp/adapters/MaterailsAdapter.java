@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,12 +36,13 @@ public class MaterailsAdapter extends RecyclerView.Adapter<MaterailsAdapter.Mate
     @Override
     public void onBindViewHolder(@NonNull MaterialsViewHolder holder, final int position) {
         holder.names.setText(mActivitiesModels.get(position).getName());
-        holder.arrow.setOnClickListener(new View.OnClickListener() {
+        holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String id = mActivitiesModels.get(position).getId();
                 Intent intent = new Intent(mContext, CleaningProductActivity.class);
                 intent.putExtra("id",id);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });
@@ -55,10 +57,12 @@ public class MaterailsAdapter extends RecyclerView.Adapter<MaterailsAdapter.Mate
     public class MaterialsViewHolder extends RecyclerView.ViewHolder{
         public TextView names;
         public ImageView arrow;
+        public LinearLayout layout;
         public MaterialsViewHolder(@NonNull View itemView) {
             super(itemView);
             names = (TextView)itemView.findViewById(R.id.activity_names);
             arrow = (ImageView)itemView.findViewById(R.id.next_icon);
+            layout=itemView.findViewById(R.id.recommendproductitemlayout);
         }
     }
 }

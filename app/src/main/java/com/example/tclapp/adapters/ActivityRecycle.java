@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +17,12 @@ import com.example.tclapp.R;
 import com.example.tclapp.model.RecommendationModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityRecycle extends RecyclerView.Adapter<ActivityRecycle.ActivitiesViewHolder> {
     private Context mContext;
-    private ArrayList<RecommendationModel> mActivitiesModels;
-    public ActivityRecycle(Context mContext, ArrayList<RecommendationModel> mActivitiesModels) {
+    private List<RecommendationModel> mActivitiesModels;
+    public ActivityRecycle(Context mContext, List<RecommendationModel> mActivitiesModels) {
         this.mContext = mContext;
         this.mActivitiesModels = mActivitiesModels;
     }
@@ -35,7 +37,7 @@ public class ActivityRecycle extends RecyclerView.Adapter<ActivityRecycle.Activi
     @Override
     public void onBindViewHolder(@NonNull ActivitiesViewHolder holder, final int position) {
         holder.names.setText(mActivitiesModels.get(position).getName());
-        holder.arrow.setOnClickListener(new View.OnClickListener() {
+        holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String id = mActivitiesModels.get(position).getId();
@@ -54,10 +56,12 @@ public class ActivityRecycle extends RecyclerView.Adapter<ActivityRecycle.Activi
     public class ActivitiesViewHolder extends RecyclerView.ViewHolder{
         public TextView names;
         public ImageView arrow;
+        public LinearLayout layout;
         public ActivitiesViewHolder(@NonNull View itemView) {
             super(itemView);
             names = (TextView)itemView.findViewById(R.id.activity_names);
             arrow = (ImageView)itemView.findViewById(R.id.next_icon);
+            layout=itemView.findViewById(R.id.recommendproductitemlayout);
         }
     }
 }

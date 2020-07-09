@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.example.tclapp.R;
 import com.example.tclapp.data.RetrofitApi;
 import com.example.tclapp.model.ProductList;
 import com.example.tclapp.model.RegisterResponse;
+import com.example.tclapp.model.SaveSharedPreference;
 import com.example.tclapp.model.User;
 
 import retrofit2.Call;
@@ -37,6 +39,8 @@ public class Register extends AppCompatActivity {
     Toolbar toolbar;
     TextView toolbarTitle;
     ImageView toolbarBackIcon;
+    private ProgressDialog mProgressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,9 @@ public class Register extends AppCompatActivity {
         toolbarBackIcon=findViewById(R.id.backicon);
 
         toolbarTitle.setText("Register");
+
+
+
         toolbarBackIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,9 +76,11 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String getUserName=name.getText().toString();
                 String getemail=email.getText().toString();
-                String getMobile=mobile.getText().toString();
+                final String getMobile=mobile.getText().toString();
                 String getPassword=password.getText().toString();
                 String getRepassword=retypepassword.getText().toString();
+
+
 
                 if(getUserName.isEmpty()||getemail.isEmpty()||getMobile.isEmpty()||getPassword.isEmpty()||getRepassword.isEmpty())
                 {
@@ -101,13 +110,37 @@ public class Register extends AppCompatActivity {
 
                             RetrofitApi api = retrofit.create(RetrofitApi.class);
                             Call<RegisterResponse> call=api.registerUser(user);
+                            mProgressDialog = new ProgressDialog(Register.this);
+                            mProgressDialog.setIndeterminate(true);
+                            mProgressDialog.setMessage("Loading...");
+                            mProgressDialog.setCanceledOnTouchOutside(false);
+                            mProgressDialog.show();
                             call.enqueue(new Callback<RegisterResponse>() {
                                 @Override
                                 public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                                     String checkResponse=response.body().getStatus();
+
+
                                     if (checkResponse.equals("Data added successefuly"))
                                     {
+
+                                        String getName=response.body().getUser().getName();
+                                        String getEmail=response.body().getUser().getEmail();
+                                        String getPhone=response.body().getUser().getMobile();
+                                        String userId=response.body().getUser().getId();
+
+                                        mProgressDialog.dismiss();
+
+
                                         Intent i=new Intent(Register.this,ControlActivity.class);
+                                        SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+//                                        SaveSharedPreference.setUserName(getApplicationContext(),getName);
+//                                        SaveSharedPreference.setUserEmail(getApplicationContext(),getEmail);
+//                                        SaveSharedPreference.setUserPhone(getApplicationContext(),getPhone);
+                                       SaveSharedPreference.setUserId(getApplicationContext(),userId);
+
+
+
                                         name.getText().clear();
                                         email.getText().clear();
                                         password.getText().clear();
@@ -118,12 +151,15 @@ public class Register extends AppCompatActivity {
                                     }
                                     else if(checkResponse.equals("Your are registered"))
                                     {
+                                        mProgressDialog.dismiss();
                                         Toast.makeText(Register.this, "This mail is already Registerd , Go back to login Screen", Toast.LENGTH_SHORT).show();
                                     }
                                 }
 
                                 @Override
                                 public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                                    mProgressDialog.dismiss();
+
                                     Log.e("TESTRegister",t.getMessage());
 
                                 }

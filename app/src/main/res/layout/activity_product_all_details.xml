@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/allproductDetailslayout"
     tools:context=".Activities.ProductAllDetails">
     <include
         android:id="@+id/activitytoolbar"
@@ -15,6 +16,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/activitytoolbar"
         android:layout_marginTop="15dp"
+        android:layout_margin="15dp"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -46,6 +48,7 @@
                         android:textSize="15sp"
                         android:layout_below="@id/descTextView"
                         android:layout_marginLeft="8dp"
+                        android:gravity="left"
                         android:layout_marginTop="5dp"
                         android:textColor="#000"
                         android:id="@+id/longDesc"
@@ -80,6 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
+                        android:gravity="left"
                         android:layout_below="@id/safteytx"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="5dp"
@@ -116,6 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
+                        android:gravity="left"
                         android:layout_below="@id/howtouseTx"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="5dp"
@@ -126,6 +131,19 @@
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:id="@+id/calculator_button"
+                android:layout_below="@id/howtouse"
+                android:text="Consumption"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:padding="5dp"
+                ></Button>
 
         </RelativeLayout>
     </ScrollView>

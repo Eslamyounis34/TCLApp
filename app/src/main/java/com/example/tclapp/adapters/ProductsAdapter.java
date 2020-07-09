@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,11 +36,13 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     @Override
     public void onBindViewHolder(@NonNull ProductsViewHolder holder, final int position) {
         holder.names.setText(mActivitiesModels.get(position).getName());
-        holder.names.setOnClickListener(new View.OnClickListener() {
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(mContext, ProductAllDetails.class);
-                i.putExtra("SelectedProductId","9");
+                i.putExtra("SelectedProductId",mActivitiesModels.get(position).getId());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Toast.makeText(mContext, mActivitiesModels.get(position).getId(), Toast.LENGTH_SHORT).show();
                 mContext.startActivity(i);
             }
         });
@@ -52,9 +56,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     public class ProductsViewHolder extends RecyclerView.ViewHolder{
         public TextView names;
+        public LinearLayout linearLayout;
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
             names = (TextView)itemView.findViewById(R.id.product_name);
+            linearLayout=itemView.findViewById(R.id.recommendationnproductlayout);
         }
     }
 }

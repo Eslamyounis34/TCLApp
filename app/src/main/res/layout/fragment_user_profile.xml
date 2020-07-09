@@ -11,6 +11,150 @@
         layout="@layout/basictoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activitytoolbar"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick Image"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:textColor="#0069c0"
+            android:id="@+id/pickImagetx"
+            android:layout_below="@id/userImage"
+            android:textSize="20sp"
+            ></TextView>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/userImage"
+            android:src="@drawable/takepicicon"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            ></de.hdodenhof.circleimageview.CircleImageView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/pickImagetx"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="20dp"
+                android:id="@+id/firstrelativelayout"
+                >
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/loggedusername"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Eslam Younis"
+                    android:textColor="#000"
+                    android:layout_marginLeft="10dp"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editusername"
+                    android:text="Edit"
+                    android:textSize="15sp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:textColor="#0069c0"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:layout_gravity="end"
+                    ></TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:id="@+id/secondone"
+                android:layout_below="@id/firstrelativelayout">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/loggeduseremail"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Eslam@gmail.com"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    ></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edituseremail"
+                    android:text="Edit"
+                    android:textSize="15sp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:textColor="#0069c0"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:layout_gravity="end"
+                    ></TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/secondone"
+                android:layout_margin="20dp"
+                android:id="@+id/thirdone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/loggeduserPhone"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:text="Eslam@gmail.com"
+                    android:textColor="#000"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edituserphone"
+                    android:text="Edit"
+                    android:textSize="15sp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:textColor="#0069c0"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:layout_gravity="end"
+                    ></TextView>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:textColor="#fff"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="logout"
+            android:id="@+id/LogoutButton"
+            ></Button>
 
 </RelativeLayout>

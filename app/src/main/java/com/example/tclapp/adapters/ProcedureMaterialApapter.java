@@ -45,7 +45,7 @@ public class ProcedureMaterialApapter extends RecyclerView.Adapter<ProcedureMate
                 Toast.makeText(mContext, "My Id is "+mProceduresList.get(position).getId() , Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(mContext.getApplicationContext(), ProcedurePdfActivity.class);
                 intent.putExtra("ProcedurePdfID",mProceduresList.get(position).getId());
-
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });

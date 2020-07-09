@@ -11,6 +11,18 @@ public class User {
     private String mobile;
     @SerializedName("password")
     private String pass;
+    @SerializedName("id")
+    private String id;
+    @SerializedName("user_image")
+    private String user_image;
+
+    public String getUser_image() {
+        return user_image;
+    }
+
+    public void setUser_image(String user_image) {
+        this.user_image = user_image;
+    }
 
     public User(String name, String email, String mobile, String pass) {
         this.name = name;
@@ -18,6 +30,18 @@ public class User {
         this.mobile = mobile;
         this.pass = pass;
     }
+
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
 
     public String getName() {
         return name;

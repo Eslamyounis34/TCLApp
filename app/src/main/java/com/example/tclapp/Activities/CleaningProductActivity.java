@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,6 +29,9 @@ public class CleaningProductActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView toolbarTitle;
     private ImageView back;
+
+    private ProgressDialog mProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,7 @@ public class CleaningProductActivity extends AppCompatActivity {
         toolbar=findViewById(R.id.custom_app_toolbar);
         toolbarTitle = findViewById(R.id.toolbaractivityname);
         back = findViewById(R.id.backicon);
+
 
 
         toolbarTitle.setText("Cleaning Recommendtion Product");
@@ -62,13 +67,13 @@ public class CleaningProductActivity extends AppCompatActivity {
         call.enqueue(new Callback<ProductsParent>() {
             @Override
             public void onResponse(Call<ProductsParent> call, Response<ProductsParent> response) {
+
                 adapter = new ProductsAdapter(getApplicationContext(),response.body().getProductmodelList());
                 mRecyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onFailure(Call<ProductsParent> call, Throwable t) {
-
             }
         });
 

@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/country_info_name"
             android:textSize="20sp"
+            android:gravity="left"
             android:hint="name"
             android:padding="10dp"
             android:textColor="@android:color/black"/>
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/country_info_email"
             android:textSize="20sp"
+            android:gravity="left"
             android:hint="mail"
             android:padding="10dp"
             android:textColor="@android:color/black"/>
@@ -31,6 +33,7 @@
             android:id="@+id/country_info_phone"
             android:textSize="20sp"
             android:hint="phone"
+            android:gravity="left"
             android:padding="10dp"
             android:textColor="@android:color/black"/>
     </LinearLayout>

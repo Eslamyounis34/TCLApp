@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,17 +76,9 @@ public class ControlActivity extends AppCompatActivity {
         BottomNavigationView mBottomnanigation=(BottomNavigationView)findViewById(R.id.bottomBar);
         mBottomnanigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        String name= SaveSharedPreference.getUserName(getApplicationContext());
-        String email= SaveSharedPreference.getUserEmail(getApplicationContext());
-        String phone= SaveSharedPreference.getUserPhone(getApplicationContext());
-
         toolbarTitle=findViewById(R.id.toolbaractivityname);
         toolbar=findViewById(R.id.apptoolbar);
         mBottomnanigation.setSelectedItemId(R.id.home);
-
-        Toast.makeText(this, "welcome "+name+email+phone, Toast.LENGTH_SHORT).show();
-
-
 
     }
 

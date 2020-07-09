@@ -42,7 +42,10 @@ public class ProductAdapter extends  RecyclerView.Adapter<ProductAdapter.ViewHol
             public void onClick(View v) {
                 Intent i = new Intent(mContext, ProductAllDetails.class);
                 i.putExtra("SelectedProductId", productList.get(position).getId());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 mContext.startActivity(i);
+
             }
         });
 

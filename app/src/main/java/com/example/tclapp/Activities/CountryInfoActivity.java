@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,6 +30,8 @@ public class CountryInfoActivity extends AppCompatActivity {
     private TextView toolbarTitle;
     private ImageView back;
     String countryName;
+    private ProgressDialog mProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,11 @@ public class CountryInfoActivity extends AppCompatActivity {
         });
         recyclerView = (RecyclerView)findViewById(R.id.country_info);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mProgressDialog = new ProgressDialog(CountryInfoActivity.this);
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.setMessage("Loading...");
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.show();
         Retrofit retrofit2 = new Retrofit.Builder()
                 .baseUrl("http://appadmin.tclgcc.com")
                 .addConverterFactory(GsonConverterFactory.create()).build();
@@ -59,12 +67,14 @@ public class CountryInfoActivity extends AppCompatActivity {
         call.enqueue(new Callback<CountryParent>() {
             @Override
             public void onResponse(Call<CountryParent> call, Response<CountryParent> response) {
+                mProgressDialog.dismiss();
                 adapter = new CountryAdapter(getApplicationContext(),response.body().getcParent().getCountrymodelList());
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onFailure(Call<CountryParent> call, Throwable t) {
+                mProgressDialog.dismiss();
 
             }
         });

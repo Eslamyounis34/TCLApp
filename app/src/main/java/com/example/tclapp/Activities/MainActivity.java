@@ -1,9 +1,11 @@
 package com.example.tclapp.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
   EditText emailET,passwordET;
   ConstraintLayout layout;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please Fill All Fields", Toast.LENGTH_SHORT).show();
                 }else
                 {
-                    UserLogin userLogin=new UserLogin(getEmail,getpass);
+                    final UserLogin userLogin=new UserLogin(getEmail,getpass);
                     Retrofit retrofit = new Retrofit.Builder()
                             .baseUrl(RetrofitApi.BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
@@ -87,18 +90,31 @@ public class MainActivity extends AppCompatActivity {
 
                     RetrofitApi api = retrofit.create(RetrofitApi.class);
                     Call<UserLoginData> call=api.loginUser(userLogin);
+
+                    mProgressDialog = new ProgressDialog(MainActivity.this);
+                    mProgressDialog.setIndeterminate(true);
+                    mProgressDialog.setMessage("Loading...");
+                    mProgressDialog.setCanceledOnTouchOutside(false);
+                    mProgressDialog.show();
                     call.enqueue(new Callback<UserLoginData>() {
                         @Override
                         public void onResponse(Call<UserLoginData> call, Response<UserLoginData> response) {
 
+                            mProgressDialog.dismiss();
+
                             String s=response.body().getUser().getName();
                             String userEmail=response.body().getUser().getEmail();
                             String userPHone=response.body().getUser().getMobile();
+                            String userId=response.body().getUser().getId();
+
+                            Log.e("CkeckMobile",userPHone);
 
                             SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
-                            SaveSharedPreference.setUserName(getApplicationContext(),s);
-                            SaveSharedPreference.setUserEmail(getApplicationContext(),userEmail);
-                            SaveSharedPreference.setUserPhone(getApplicationContext(),userPHone);
+//                            SaveSharedPreference.setUserName(getApplicationContext(),s);
+//                            SaveSharedPreference.setUserEmail(getApplicationContext(),userEmail);
+//                            SaveSharedPreference.setUserPhone(getApplicationContext(),userPHone);
+                            SaveSharedPreference.setUserId(getApplicationContext(),userId);
+
 
                             Intent intent = new Intent(getApplicationContext(), ControlActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK |FLAG_ACTIVITY_CLEAR_TASK);
@@ -106,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<UserLoginData> call, Throwable t) {
+                            mProgressDialog.dismiss();
+
 
                             Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
 

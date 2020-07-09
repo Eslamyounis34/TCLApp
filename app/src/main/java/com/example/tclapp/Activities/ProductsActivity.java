@@ -1,5 +1,6 @@
 package com.example.tclapp.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -46,6 +47,7 @@ public class ProductsActivity extends AppCompatActivity {
     List<Product> productList;
 
     private int  current_page=1;
+    private ProgressDialog mProgressDialog;
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(RetrofitApi.BASE_URL)
@@ -79,7 +81,13 @@ public class ProductsActivity extends AppCompatActivity {
         productsRecycler.setLayoutManager(layoutManager);
         mAdapter=new ProductAdapter(getApplicationContext(),productList);
 
+        mProgressDialog = new ProgressDialog(ProductsActivity.this);
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.setMessage("Loading...");
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.show();
 
+       // getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         productsRecycler.addOnScrollListener(new EndlessRecyclerViewScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
@@ -109,6 +117,8 @@ public class ProductsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProductList> call, Response<ProductList> response) {
 
+                mProgressDialog.dismiss();
+
                 productList.addAll(response.body().getData().getData());
                 productsRecycler.setAdapter(mAdapter);
 
@@ -116,6 +126,7 @@ public class ProductsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ProductList> call, Throwable t) {
+                mProgressDialog.dismiss();
 
             }
         });

@@ -28,6 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Site"
+                android:gravity="left"
                 android:layout_weight=".3"
                 android:textColor="#000"
                 android:textStyle="bold"
@@ -58,6 +59,7 @@
                 android:layout_weight=".3"
                 android:layout_height="wrap_content"
                 android:text="Material"
+                android:gravity="left"
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:textSize="20sp"
@@ -88,6 +90,7 @@
                 android:layout_weight=".3"
                 android:textColor="#000"
                 android:textStyle="bold"
+                android:gravity="left"
                 android:textSize="20sp"
                 ></TextView>
 
@@ -116,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:text="Your Email"
                 android:textColor="#000"
+                android:gravity="left"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 ></TextView>
@@ -139,24 +143,41 @@
             android:weightSum="1"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
-            <TextView
+            <RelativeLayout
                 android:layout_width="0dp"
-                android:layout_weight=".3"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:text="Image"
-                android:textSize="20sp"
-                ></TextView>
-
+                android:layout_weight=".3">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:text="Image"
+                    android:id="@+id/imagetext"
+                    android:textSize="20sp"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick Image"
+                    android:layout_below="@id/imagetext"
+                    android:layout_marginTop="10dp"
+                    android:gravity="left"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/pickImagetx"
+                    android:textSize="20sp"
+                    ></TextView>
+            </RelativeLayout>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_weight=".7"
                 android:src="@drawable/takepicicon"
                 android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
                 android:background="@drawable/inquiryedittextbg"
-                android:id="@+id/takeimage"
+                android:id="@+id/selectedimage"
                 ></ImageView>
         </LinearLayout>
 
