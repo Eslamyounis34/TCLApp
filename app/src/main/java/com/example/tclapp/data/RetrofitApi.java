@@ -80,13 +80,13 @@ public interface RetrofitApi {
             ,@Query("email")String email,@Query("description")String desc);
 
     @POST("/api/user/editProfile")
-    Call<UpdateUserResponse>getUpdatedUserName(@Query("user_id")String id,@Query("name")String name,@Query("email")String email,@Query("personal_phone")String phone);
+    Call<UpdateUserResponse>getUpdatedUserName(@Query("user_id")String id,@Query("user_image")String imageurl,@Query("name")String name,@Query("email")String email,@Query("personal_phone")String phone);
 
     @POST("/api/user/editProfile")
-    Call<UpdateUserResponse>getUpdatedUserEmail(@Query("user_id")String id,@Query("email")String email,@Query("name")String name,@Query("personal_phone")String phone);
+    Call<UpdateUserResponse>getUpdatedUserEmail(@Query("user_id")String id,@Query("user_image")String imageurl,@Query("email")String email,@Query("name")String name,@Query("personal_phone")String phone);
 
     @POST("/api/user/editProfile")
-    Call<UpdateUserResponse>getUpdatedUserPhone(@Query("user_id")String id,@Query("personal_phone")String phone,@Query("name")String name,@Query("email")String email);
+    Call<UpdateUserResponse>getUpdatedUserPhone(@Query("user_id")String id,@Query("user_image")String imageurl,@Query("personal_phone")String phone,@Query("name")String name,@Query("email")String email);
 
     @Multipart
     @POST("/api/user/editProfile")

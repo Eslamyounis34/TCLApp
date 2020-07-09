@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.UserProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,34 +15,40 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/parentlayout"
         android:layout_below="@id/activitytoolbar"
         android:layout_centerVertical="true"
         android:gravity="center_vertical"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="Pick Image"
             android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
             android:textColor="#0069c0"
-            android:id="@+id/pickImagetx"
+            android:layout_toRightOf="@id/userImage"
+            android:id="@+id/pickImageim"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/addimageicon"
             android:layout_below="@id/userImage"
-            android:textSize="20sp"
-            ></TextView>
+            ></ImageView>
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:id="@+id/userImage"
-            android:src="@drawable/takepicicon"
+            app:civ_circle_background_color="#707070"
+            app:civ_border_color="#707070"
+            app:civ_border_width="2dp"
+            android:src="@drawable/userunknownpng"
             android:scaleType="centerCrop"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             ></de.hdodenhof.circleimageview.CircleImageView>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_below="@id/pickImagetx"
-            android:layout_marginTop="30dp"
+            android:layout_below="@id/pickImageim"
+            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
             android:layout_height="wrap_content">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -57,7 +64,6 @@
                     android:id="@+id/loggedusername"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Eslam Younis"
                     android:textColor="#000"
                     android:layout_marginLeft="10dp"
                     ></TextView>
@@ -88,7 +94,6 @@
                     android:id="@+id/loggeduseremail"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Eslam@gmail.com"
                     android:layout_marginLeft="10dp"
                     android:textColor="#000"
                     android:layout_marginTop="10dp"
@@ -122,7 +127,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"
-                    android:text="Eslam@gmail.com"
                     android:textColor="#000"
                     ></TextView>
                 <TextView
@@ -151,8 +155,8 @@
             android:background="@drawable/button_background"
             android:textColor="#fff"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
-            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/parentlayout"
             android:text="logout"
             android:id="@+id/LogoutButton"
             ></Button>

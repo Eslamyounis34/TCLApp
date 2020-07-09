@@ -20,9 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tclapp.Activities.ControlActivity;
 import com.example.tclapp.Activities.MainActivity;
 import com.example.tclapp.Activities.ProductAllDetails;
 import com.example.tclapp.Activities.ProductsActivity;
@@ -54,9 +56,10 @@ import static android.app.Activity.RESULT_OK;
 public class UserProfileFragment extends Fragment {
 
     Toolbar toolbar;
-    TextView toolbatText, userName, userEmail, userPhone, pickImage;
+    TextView toolbatText, userName, userEmail, userPhone;
+    ImageView pickImage;
     Button logoutBt;
-    CircleImageView capturedImage;
+    ImageView capturedImage;
 
     TextView editEmail, editNAme, editPhone;
 
@@ -81,7 +84,7 @@ public class UserProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_user_profile, container, false);
+        final View v = inflater.inflate(R.layout.fragment_user_profile, container, false);
 
         toolbar = v.findViewById(R.id.apptoolbar);
         toolbatText = v.findViewById(R.id.toolbaractivityname);
@@ -89,8 +92,7 @@ public class UserProfileFragment extends Fragment {
         userEmail = v.findViewById(R.id.loggeduseremail);
         userPhone = v.findViewById(R.id.loggeduserPhone);
         logoutBt = v.findViewById(R.id.LogoutButton);
-        pickImage = v.findViewById(R.id.pickImagetx);
-        capturedImage = v.findViewById(R.id.userImage);
+        pickImage = v.findViewById(R.id.pickImageim);
         editEmail = v.findViewById(R.id.edituseremail);
         editNAme = v.findViewById(R.id.editusername);
         editPhone = v.findViewById(R.id.edituserphone);
@@ -102,7 +104,7 @@ public class UserProfileFragment extends Fragment {
             public void onClick(View v) {
 
                 SaveSharedPreference.setLoggedIn(getContext(), false);
-                startActivity(new Intent(getContext(), MainActivity.class));
+                startActivity(new Intent(getContext(), ControlActivity.class));
             }
         });
 
@@ -152,15 +154,22 @@ public class UserProfileFragment extends Fragment {
                         userName.setText("No Data");
 
                     }
-                    else {                    userName.setText(response.body().getData().getName());
+                    else {
+                        userName.setText(response.body().getData().getName());
                     }
+                     capturedImage = v.findViewById(R.id.userImage);
+
                     if (user_iamge_url==null)
                     {
-                        Toast.makeText(getContext(), "No user Image", Toast.LENGTH_SHORT).show();
-
-                    }else {
-                        Toast.makeText(getContext(), "Image Exists", Toast.LENGTH_SHORT).show();
+                        Picasso.get().load(R.drawable.userunknownpng).into(capturedImage);
+                        Toast.makeText(getContext(), "Image Null", Toast.LENGTH_SHORT).show();
                     }
+                    else {
+                        Toast.makeText(getContext(), "Exists", Toast.LENGTH_SHORT).show();
+                        Picasso.get().load(user_iamge_url).into(capturedImage);
+                    }
+
+
 
 
                     if (phone==null)
@@ -183,7 +192,6 @@ public class UserProfileFragment extends Fragment {
 
                     }
 
-                    Picasso.get().load(response.body().getData().getUser_image()).into(capturedImage);
             }
 
                 @Override
@@ -206,34 +214,44 @@ public class UserProfileFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             edittext_text = input.getText().toString();
+                            if(android.util.Patterns.EMAIL_ADDRESS.matcher(edittext_text).matches())
+                            {
+                                Call<UpdateUserResponse> emailcall=api.getUpdatedUserEmail(id,user_iamge_url,edittext_text,name,phone);
+                                mProgressDialog = new ProgressDialog(getContext());
+                                mProgressDialog.setIndeterminate(true);
+                                mProgressDialog.setMessage("Loading...");
+                                mProgressDialog.setCanceledOnTouchOutside(false);
+                                mProgressDialog.show();
+                                emailcall.enqueue(new Callback<UpdateUserResponse>() {
+                                    @Override
+                                    public void onResponse(Call<UpdateUserResponse> call, Response<UpdateUserResponse> response) {
+                                        mProgressDialog.dismiss();
+                                        if (response.code()==200)
+                                        {
+                                            Toast.makeText(getContext(), response.body().getStatus(), Toast.LENGTH_SHORT).show();
 
 
-                            Call<UpdateUserResponse> emailcall=api.getUpdatedUserEmail(id,edittext_text,name,phone);
+                                            email=  response.body().getData().getEmail();
+                                            userEmail.setText(email);
 
-                            emailcall.enqueue(new Callback<UpdateUserResponse>() {
-                                @Override
-                                public void onResponse(Call<UpdateUserResponse> call, Response<UpdateUserResponse> response) {
-                                    if (response.code()==200)
-                                    {
-                                        Toast.makeText(getContext(), response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                                        }
+                                        else
+                                        {
+                                            Toast.makeText(getContext(), "Invalied", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
 
-                                        // Log.e("CHECKRESPONSE",response.body().getData().getEmail());
-
-                                        email=  response.body().getData().getEmail();
-                                        userEmail.setText(email);
+                                    @Override
+                                    public void onFailure(Call<UpdateUserResponse> call, Throwable t) {
+                                        mProgressDialog.dismiss();
 
                                     }
-                                    else
-                                    {
-                                        Toast.makeText(getContext(), "Invalied", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Call<UpdateUserResponse> call, Throwable t) {
-
-                                }
-                            });
+                                });
+                            }
+                            else
+                            {
+                                Toast.makeText(getContext(), "Invalied Email", Toast.LENGTH_SHORT).show();
+                            }
 
                         }
                     });
@@ -265,11 +283,16 @@ public class UserProfileFragment extends Fragment {
                             edittext_text = input.getText().toString();
 
 
-                            Call<UpdateUserResponse> namecall=api.getUpdatedUserName(id,edittext_text,email,phone);
-
+                            Call<UpdateUserResponse> namecall=api.getUpdatedUserName(id,user_iamge_url,edittext_text,email,phone);
+                            mProgressDialog = new ProgressDialog(getContext());
+                            mProgressDialog.setIndeterminate(true);
+                            mProgressDialog.setMessage("Loading...");
+                            mProgressDialog.setCanceledOnTouchOutside(false);
+                            mProgressDialog.show();
                             namecall.enqueue(new Callback<UpdateUserResponse>() {
                                 @Override
                                 public void onResponse(Call<UpdateUserResponse> call, Response<UpdateUserResponse> response) {
+                                    mProgressDialog.dismiss();
                                     if (response.code()==200)
                                     {
                                         Toast.makeText(getContext(), response.body().getStatus(), Toast.LENGTH_SHORT).show();
@@ -286,6 +309,7 @@ public class UserProfileFragment extends Fragment {
 
                                 @Override
                                 public void onFailure(Call<UpdateUserResponse> call, Throwable t) {
+                                    mProgressDialog.dismiss();
 
                                 }
                             });
@@ -320,11 +344,16 @@ public class UserProfileFragment extends Fragment {
                             edittext_text = input.getText().toString();
 
 
-                            Call<UpdateUserResponse> phonecall=api.getUpdatedUserPhone(id,edittext_text,name,email);
-
+                            Call<UpdateUserResponse> phonecall=api.getUpdatedUserPhone(id,user_iamge_url,edittext_text,name,email);
+                            mProgressDialog = new ProgressDialog(getContext());
+                            mProgressDialog.setIndeterminate(true);
+                            mProgressDialog.setMessage("Loading...");
+                            mProgressDialog.setCanceledOnTouchOutside(false);
+                            mProgressDialog.show();
                             phonecall.enqueue(new Callback<UpdateUserResponse>() {
                                 @Override
                                 public void onResponse(Call<UpdateUserResponse> call, Response<UpdateUserResponse> response) {
+                                    mProgressDialog.dismiss();
                                     if (response.code()==200)
                                     {
                                         Toast.makeText(getContext(), response.body().getStatus(), Toast.LENGTH_SHORT).show();
@@ -343,6 +372,7 @@ public class UserProfileFragment extends Fragment {
 
                                 @Override
                                 public void onFailure(Call<UpdateUserResponse> call, Throwable t) {
+                                    mProgressDialog.dismiss();
 
                                 }
                             });
@@ -374,6 +404,7 @@ public class UserProfileFragment extends Fragment {
 
         return v;
     }
+
     private void openFileChooser() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -402,10 +433,10 @@ public class UserProfileFragment extends Fragment {
             mImageUri = data.getData();
 
             Picasso.get().load(mImageUri).into(capturedImage);
-            String s = getRealPathFromURI(mImageUri);
-            Log.e("checkreqfile",s);
-                    RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), s);
-                    MultipartBody.Part body = MultipartBody.Part.createFormData("user_image", s, reqFile);
+            user_iamge_url = getRealPathFromURI(mImageUri);
+            Log.e("checkreqfile",user_iamge_url);
+                    RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), user_iamge_url);
+                    MultipartBody.Part body = MultipartBody.Part.createFormData("user_image", user_iamge_url, reqFile);
 
                     Log.e("CHECKPARTYIMAGE",body.toString());
 
