@@ -17,9 +17,16 @@ public class Product {
     private String slug;
     @SerializedName("Category_name")
     private String category_name;
+    @SerializedName("photo_link")
+    private String photo_link;
 
+    public String getPhoto_link() {
+        return photo_link;
+    }
 
-
+    public void setPhoto_link(String photo_link) {
+        this.photo_link = photo_link;
+    }
 
     public String getId() {
         return id;

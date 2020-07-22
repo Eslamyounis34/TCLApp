@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tclapp.Activities.ProductAllDetails;
 import com.example.tclapp.R;
 import com.example.tclapp.model.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class ProductAdapter extends  RecyclerView.Adapter<ProductAdapter.ViewHol
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.productName.setText(productList.get(position).getName());
+        Picasso.get().load("https://tclgcc.com/uploads/website/products/original/"+productList.get(position).getPhoto_link())
+                .into(holder.productImage);
         holder.productLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +63,7 @@ public class ProductAdapter extends  RecyclerView.Adapter<ProductAdapter.ViewHol
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView productName;
+        ImageView productImage;
         RelativeLayout productLayout;
 
 
@@ -67,6 +72,7 @@ public class ProductAdapter extends  RecyclerView.Adapter<ProductAdapter.ViewHol
 
             productName = itemView.findViewById(R.id.productrowtext);
             productLayout = itemView.findViewById(R.id.productlayout);
+            productImage=itemView.findViewById(R.id.productrowimage);
         }
     }
 
